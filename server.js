@@ -1,7 +1,8 @@
 const express = require("express");
 const path = require("path");
 const fs= require("fs");
-const util =require("util");
+const util = require("util");
+const {appendFile} = require('./utils');
 // const public = require("public");
 
 const app = express();
@@ -31,9 +32,17 @@ app.get('/api/notes', (req, res) => {
   const readFromFile = util.promisify(fs.readFile);
   readFromFile('./Develop/db/db.json')
   .then((data)=>{
-    console.log(data)
-    
+    try{
+      const ans = JSON.parse(data);
+      res.json(ans);
+    }
+    catch{
+      return res.json([])
+    }
+
   })
+
+
 res.sendFile(path.join(__dirname, "Develop/db/db.json"));
 // If this an option?
   // for (let i = 0; i < notes.length; i++) {
@@ -44,11 +53,16 @@ res.sendFile(path.join(__dirname, "Develop/db/db.json"));
 
 
 // Creates new notes an add to the list of notes
-app.post("/api/notes/id", (req, res) => {
-  const newNote = req.body;
-// readFile("Develop/db/db.json")
-//   notes.push(newNote);
-//   res.json(newNote);
+app.post('/api/notes', (req, res) => {
+  const {title,text} = req.body;
+  if(title && text){
+    const newNote={
+      title,
+      text
+    }
+    appendFile(newNote,'Develop/db/db.json')
+    res.json('data saved successfully')
+  }
 // taking info sent in post, read database as it currently exists, 
 // insert note into database, and then write back to the database
 
@@ -57,10 +71,6 @@ app.post("/api/notes/id", (req, res) => {
 app.listen(PORT, () =>
   console.log(`Example app listening at http://localhost:${PORT}`)
 );
-
-
-
-
 
 
 
