@@ -1,9 +1,11 @@
 const express = require("express");
 const path = require("path");
+const fs= require("fs");
+const util =require("util");
 // const public = require("public");
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8080;
 
 // Establishes middleware
 app.use(express.urlencoded({ extended: true }));
@@ -18,7 +20,7 @@ res.sendFile(path.join(__dirname, "Develop/public/index.html"));
 });
 
 
-
+// Displays pathway to notes file 
 app.get("/notes", (req, res) => {
 res.sendFile(path.join(__dirname, "Develop/public/notes.html"));
 });
@@ -26,8 +28,13 @@ res.sendFile(path.join(__dirname, "Develop/public/notes.html"));
 
 // Displays the raw json file
 app.get('/api/notes', (req, res) => {
-res.sendFile(json)
-// (path.join(__dirname, "Develop/db/db.json"));
+  const readFromFile = util.promisify(fs.readFile);
+  readFromFile('./Develop/db/db.json')
+  .then((data)=>{
+    console.log(data)
+    
+  })
+res.sendFile(path.join(__dirname, "Develop/db/db.json"));
 // If this an option?
   // for (let i = 0; i < notes.length; i++) {
 //   if (saved === notes[i].routeName) {
