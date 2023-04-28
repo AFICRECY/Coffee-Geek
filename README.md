@@ -35,6 +35,95 @@ This application brings together multiple different kinds of software to create 
 
 To install this project, a knowledge of JavaScript, Node.js, and Express.js  were required. I had to first install Node.js to my computer and then install the Express and NPM packages. The Express package allowed me to use the express framework in Node.js. It allowed me to create a website which functions as a digital note taker and saves user input as well as deletes it. In order to create this application, HTML, CSS, Client-side JavaScript as well as Server Side JavaScript all needed to be used in order to make the page interactive and give the functionality to save/delete user input values. Methods used ranged from, Template Literals, Arrow Functions, Objects, and Functions, Variables, If/Else Statements, and the server side JavaScript. The web application is intended for the user to be able to visit the deployed URL and have the ability to enter whatever Title and Text they would like. They would also have the ability to save their notes to the left column, where they can read them later, or delete them if they want. The code below makes this happen. 
 
+### Establishing links and connections
+```
+const express = require("express");
+const path = require("path");
+const fs = require("fs");
+const util = require("util");
+
+
+const { v4: uuidv4 } = require("uuid");
+
+
+const app = express();
+const PORT = process.env.PORT || 8080;
+
+
+```
+(Above: The code imports four modules: express, path, fs, and util. The code also imports the uuidv4 function from the uuid module. After importing required modules,an  instance of the Express application is created, which is then stored in the variable named app. In addition, the code sets the value of the PORT variable to the value of the environment variable PORT 8080.)
+
+
+### Middleware
+```
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+
+app.use(express.static("public"));
+```
+(Above: The “app.use(express.urlencoded({ extended: true }))”, configures the application to recognize and parse incoming requests with URL-encoded payloads. The extended option allows for more complex data to be parsed.The “app.use(express.json())”, configures the application to recognize and parse incoming requests with JSON payloads. Finally, the “app.use(express.static("public"))”, serves static files such as images, CSS, and JavaScript files in the specified directory named "public".) 
+
+
+
+### Get Request (directing the pathway)
+```
+app.get("/", (req, res) => {
+ res.sendFile(path.join(__dirname, "./public/index.html"));
+});
+
+
+app.get("/notes", (req, res) => {
+ res.sendFile(path.join(__dirname, "./public/notes.html"));
+});
+
+
+```
+(Above: The code uses two different app.get() methods of the Express application to set up two routes for handling HTTP GET requests.The first method sets up a route for the root URL ("/"). When a client makes a GET request to the root URL. The second method sets up a route for the "/notes" URL. When a client makes a GET request to the "/notes" URL.)
+
+
+
+### Post Request
+```
+app.post("/api/notes", (req, res) => {
+ const { title, text } = req.body;
+ if (title && text) {
+   const newNote = {
+     title,
+     text,
+     id: uuidv4(),
+   };
+   readFromFile("./db/db.json").then((data) => {
+ 
+     const existingData = JSON.parse(data);
+     existingData.push(newNote);
+     fs.writeFileSync("./db/db.json", JSON.stringify(existingData));
+     res.json("data saved successfully");
+   });
+ }
+});
+```
+(Above: This code defines a POST route that allows the user to add new notes to the db.json file using the HTTP POST method. The Express application reads the title and text properties from the req.body object, which is expected to be in JSON format.The code expects the request body to contain a JSON object with title and text properties. The new note is given a unique identifier using the uuidv4() function, and the updated data is written back to the JSON file.)
+
+
+
+### Delete Route
+```
+app.delete('/api/notes/:id', (req, res) => {
+ const contentId = req.params.id
+ console.log(contentId)
+ readFromFile('./db/db.json')
+ .then((data)=>JSON.parse(data))
+ .then((response) => {
+   const answer = response.filter((content)=>content.id!=contentId)
+   fs.writeFileSync("./db/db.json", JSON.stringify(answer));
+   res.json("data has been deleted");
+ })
+})
+```
+(Above: This code defines a DELETE route that allows clients to delete notes from the db.json file using the HTTP DELETE method. The code reads the existing notes data from a file located at "./db/db.json" using the readFromFile() function, removes the note object with the specified id from the data array using the filter() method, and writes the updated data back to the JSON file.)
+
+
 
 
 ### Usage: 
@@ -47,18 +136,18 @@ Overall, this application streamlines the Note Taking process and can save the t
 
 ## Credits
 
-*Express Installation: https://expressjs.com/en/starter/installing.html
+* Express Installation: https://expressjs.com/en/starter/installing.html
 * Static Files: https://expressjs.com/en/starter/static-files.html
-*Express API: https://expressjs.com/en/api.html
+* Express API: https://expressjs.com/en/api.html
 * GET & POST Requests: https://www.diffen.com/difference/GET-vs-POST-HTTP-Requests
 * SendFile: https://www.geeksforgeeks.org/express-js-res-sendfile-function/
 * Error Help: https://stackoverflow.com/questions/14949118/node-js-error-cannot-find-module-express
-*Heroku: https://devcenter.heroku.com/articles/getting-started-with-nodejs?singlepage=true#set-up 
-*UUID Breakdown: https://www.npmjs.com/package/uuid 
-*Save Icon: https://fontawesome.com/icons 
-*Heroku Insta: https://coding-boot-camp.github.io/full-stack/heroku/how-to-install-the-heroku-cli#connect-your-heroku-account-to-github 
-*Insomnia: https://insomnia.rest/ 
-*Express Routing Guide: https://expressjs.com/en/guide/routing.html
+* Heroku: https://devcenter.heroku.com/articles/getting-started-with-nodejs?singlepage=true#set-up 
+* UUID Breakdown: https://www.npmjs.com/package/uuid 
+* Save Icon: https://fontawesome.com/icons 
+* Heroku Insta: https://coding-boot-camp.github.io/full-stack/heroku/how-to-install-the-heroku-cli#connect-your-heroku-account-to-github 
+* Insomnia: https://insomnia.rest/ 
+* Express Routing Guide: https://expressjs.com/en/guide/routing.html
 
 
 
