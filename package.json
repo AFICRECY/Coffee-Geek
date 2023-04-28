@@ -1,0 +1,19 @@
+{
+  "name": "notes-taker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/AFICRECY/Coffee-Geek.git"
+  },
+  "author": "Afi Nkhume-Crecy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AFICRECY/Coffee-Geek/issues"
+  },
+  "homepage": "https://github.com/AFICRECY/Coffee-Geek#readme"
+}
