@@ -2,7 +2,6 @@ const express = require("express");
 const path = require("path");
 const fs = require("fs");
 const util = require("util");
-const { appendFile } = require("./utils");
 // get a random id to save to note
 const { v4: uuidv4 } = require("uuid");
 
