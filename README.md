@@ -15,7 +15,9 @@
 
 ## Description:
 
-Watch Functionality Video:
+Deployed Link: 
+https://aficrecy.github.io/Coffee-Geek/
+http://localhost:8080
 
 Note Taking is an important practice and can serve as a valuable means of documenting crucial details. Writing notes can help anyone by reminding them of ideas, tasks, or assignments, and even new information that could have otherwise been forgotten. Not only does note-taking aid in retention of auditory information, it also facilitates active listening and enhances comprehension by prompting selection of noteworthy points. With a note-taking app, you can capture your ideas wherever you are, ensuring that you never forget them. Digital note-taking also enables you to read and edit your notes on the go, freeing you from the need to stay at your desk or computer all day.
 
