@@ -1,131 +1,38 @@
-# Coffee-Geek
-# 11 Express.js: Note Taker
-
-## Your Task
-
-Your assignment is to modify starter code to create an application called Note Taker that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file.
-
-The application’s front end has already been created. It's your job to build the back end, connect the two, and then deploy the entire application to Heroku.
+# Coffee-Geek (Digital Note Taker)
 
 
-## User Story
-
-```
-AS A small business owner
-I WANT to be able to write and save notes
-SO THAT I can organize my thoughts and keep track of tasks I need to complete
-```
-
-
-## Acceptance Criteria
-
-```
-GIVEN a note-taking application
-WHEN I open the Note Taker
-THEN I am presented with a landing page with a link to a notes page
-WHEN I click on the link to the notes page
-THEN I am presented with a page with existing notes listed in the left-hand column, plus empty fields to enter a new note title and the note’s text in the right-hand column
-WHEN I enter a new note title and the note’s text
-THEN a Save icon appears in the navigation at the top of the page
-WHEN I click on the Save icon
-THEN the new note I have entered is saved and appears in the left-hand column with the other existing notes
-WHEN I click on an existing note in the list in the left-hand column
-THEN that note appears in the right-hand column
-WHEN I click on the Write icon in the navigation at the top of the page
-THEN I am presented with empty fields to enter a new note title and the note’s text in the right-hand column
-```
+## Technology Used:
+| Technology Used         | Resource URL           |
+| ------------- |:-------------:|
+| Git | [https://git-scm.com/](https://git-scm.com/)     |
+| JavaScript  | [https://getbootstrap.com/docs/5.3/getting-started/introduction/](https://developer.mozilla.org/en-US/docs/Web/JavaScript)      |
+| Node.js | [https://nodejs.org/en](https://nodejs.org/en)      |
+| Express.js | [https://expressjs.com/](https://expressjs.com/)   |
+|  Heroku  | [https://id.heroku.com/login](https://id.heroku.com/login)    |
+| Font Awesome  |  [https://fontawesome.com/icons](https://fontawesome.com/icons)   |
 
 
-## Mock-Up
 
-The following images show the web application's appearance and functionality:
+## Description:
 
-![Existing notes are listed in the left-hand column with empty fields on the right-hand side for the new note’s title and text.](./Assets/11-express-challenge-demo-01.png)
+Watch Functionality Video:
 
-![Note titled “Balance accounts” reads, “Balance account books by end of day Monday,” with other notes listed on the left.](./Assets/11-express-challenge-demo-02.png)
+Note Taking is an important practice and can serve as a valuable means of documenting crucial details. Writing notes can help anyone by reminding them of ideas, tasks, or assignments, and even new information that could have otherwise been forgotten. Not only does note-taking aid in retention of auditory information, it also facilitates active listening and enhances comprehension by prompting selection of noteworthy points. With a note-taking app, you can capture your ideas wherever you are, ensuring that you never forget them. Digital note-taking also enables you to read and edit your notes on the go, freeing you from the need to stay at your desk or computer all day.
 
-
-## Getting Started
-
-On the back end, the application should include a `db.json` file that will be used to store and retrieve notes using the `fs` module.
-
-The following HTML routes should be created:
-
-* `GET /notes` should return the `notes.html` file.
-
-* `GET *` should return the `index.html` file.
-
-The following API routes should be created:
-
-* `GET /api/notes` should read the `db.json` file and return all saved notes as JSON.
-
-* `POST /api/notes` should receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client. You'll need to find a way to give each note a unique id when it's saved (look into npm packages that could do this for you).
+This application brings together multiple different kinds of software to create a note taking application called Coffee Geek. Coffee Geek allows the user to enter a title as well as a note and save them to a list of tasks in a user friendly environment. All the user would have to do is enter our website, press the “Get Started” button and jot down anything they would like into the “Title” and “Text” section. Once they press the save icon at the top of the screen, they will be able to save their note which appears on the left side of their screen in a list. 
 
 
-## Bonus
 
-You haven’t learned how to handle DELETE requests, but this application offers that functionality on the front end. As a bonus, try to add the DELETE route to the application using the following guideline:
-
-* `DELETE /api/notes/:id` should receive a query parameter that contains the id of a note to delete. To delete a note, you'll need to read all notes from the `db.json` file, remove the note with the given `id` property, and then rewrite the notes to the `db.json` file.
-
-
-## Grading Requirements
-
-This challenge is graded based on the following criteria: 
+## Table of Contents:
+* Installation (JavaScript, Node.js, NPM Packages, Template Literals, Arrow Functions, Objects, and Functions Heroku, Express.js)
+* Usage
+* Credits
+* License
 
 
-### Technical Acceptance Criteria: 40%
+## Installation:
 
-* Satisfies all of the preceding acceptance criteria plus the following:
-
-  * Application front end must connect to an Express.js back end.
-
-  * Application back end must store notes that have a unique id in a JSON file.
-
-  * Application must be deployed to Heroku.
+To install this project, a knowledge of JavaScript, Node.js, and Express.js  were required. I had to first install Node.js to my computer and then install the Express and NPM packages. The Express package allowed me to use the express framework in Node.js. It allowed me to create a website which functions as a digital note taker and saves user input as well as deletes it. In order to create this application, HTML, CSS, Client-side JavaScript as well as Server Side JavaScript all needed to be used in order to make the page interactive and give the functionality to save/delete user input values. Methods used ranged from, Template Literals, Arrow Functions, Objects, and Functions, Variables, If/Else Statements, and the server side JavaScript. The web application is intended for the user to be able to visit the deployed URL and have the ability to enter whatever Title and Text they would like. They would also have the ability to save their notes to the left column, where they can read them later, or delete them if they want. The code below makes this happen. 
 
 
-### Deployment: 36%
-
-* Application deployed at live URL.
-
-* Application loads with no errors.
-
-* Application GitHub URL submitted.
-
-* GitHub repository contains application code.
-
-
-### Application Quality: 11%
-
-* Application console is free of errors.
-
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality README file with description, screenshot, and link to deployed application.
-
-
-### Bonus: +10 Points
-
-* Application allows users to delete notes.
-
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository, with a unique name and a README describing the project.
-
-- - -
-© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+### Usage: 
