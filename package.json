@@ -1,20 +1,21 @@
 {
-  "name": "notes-taker",
+  "name": "note-taker",
   "version": "1.0.0",
   "description": "",
-  "main": "./server.js",
+  "main": "server.js",
   "scripts": {
     "start":"node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/AFICRECY/Coffee-Geek.git"
-  },
-  "author": "Afi Nkhume-Crecy",
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/AFICRECY/Coffee-Geek/issues"
-  },
-  "homepage": "https://github.com/AFICRECY/Coffee-Geek#readme"
+  "dependencies": {
+    "express": "^4.18.2",
+    "uuid": "^9.0.0"
+  }
 }
